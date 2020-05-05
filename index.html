@@ -98,28 +98,96 @@
 		<div class="markdown-body home-categories">
 		
 			<div class="article">
-                <a class="clearlink" href="15886633016930.html">
+                <a class="clearlink" href="15886907009065.html">
                 
-                  <h1>这是一个测试</h1>
+                  <h1>LeetCode-15.三数之和</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<blockquote>
-<p>进行测试。。</p>
-</blockquote>
+                        	<h2 id="toc_0">题目描述</h2>
 
-<p><img src="media/15886633016930/15886633279576.jpg" alt=""/></p>
+<p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。</p>
+
+<p>注意：答案中不可以包含重复的三元组。</p>
+
+<p>示例：</p>
+
+<pre><code class="language-text">给定数组 nums = [-1, 0, 1, 2, -1, -4]，
+
+满足要求的三元组集合为：
+[
+  [-1, 0, 1],
+  [-1, -1, 2]
+]
+</code></pre>
+
+<h2 id="toc_1">解答</h2>
 
 <ul>
-<li>测试一</li>
-<li>测试二</li>
-<li>测试三</li>
-<li>测试四s</li>
+<li>不可以用三个循环，那样太慢了。</li>
+<li>要考虑不能重复。</li>
+<li>先选定第一个数，然后用双指针去遍历剩下两个数，判断三个数加起来是否满足要求。</li>
+<li>如果选定的数与相邻的重复，那就跳过。</li>
 </ul>
 
-<pre><code class="language-javascript">const aa = function() {
-  console.log(7788)
+<pre><code class="language-javascript">
+// 先选定 A ，然后用双指针去遍历剩下的
+const threeSum = function (nums) {
+  if (nums.length === 0) return []
+  
+  // 排序
+  nums.sort((a, b) =&gt; a - b)
+
+  const length = nums.length
+  const result = []
+  let flag = 0 // 相加为0
+  let hash = {}
+
+  // 不可能满足条件
+  if (nums[0] &gt; 0 || nums[length - 1] &lt; 0) return []
+
+  for (let i = 0; i &lt; length; i++) {
+    // 相同就跳过
+    if (nums[i] === nums[i - 1]) continue
+    flag = 0 - nums[i]
+
+    // 双指针
+    let start = i + 1
+    let end = length - 1
+
+    while(start &lt; end) {
+      let temp = []
+      if (nums[start] + nums[end] &gt; flag) {
+        end--
+      } else if (nums[start] + nums[end] &lt; flag) {
+        start++
+      } else {
+        temp = [nums[i], nums[start], nums[end]]
+        // 判断去重
+        if (!hash[temp]) {
+          hash[temp] = true
+          result.push(temp)
+        }
+
+        // 指针移动
+        start += 1
+        end -=1
+
+        // 去重
+        while(start &lt; end &amp;&amp; nums[start] === nums[start - 1]) {
+          start += 1
+        }
+
+        while(start &lt; end &amp;&amp; nums[end] === nums[end + 1]) {
+          end -= 1
+        }
+      }
+    }
+
+  }
+
+  return result
 }
 </code></pre>
 
@@ -213,7 +281,7 @@
 	      
 		      
 			      <li class="post">
-			        <a href="15886633016930.html">这是一个测试</a>
+			        <a href="15886907009065.html">LeetCode-15.三数之和</a>
 			      </li>
 		     
 		   
