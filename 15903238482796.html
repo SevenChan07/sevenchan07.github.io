@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  LeetCode-3.无重复字符的最长子串 - 大仙の奇妙冒险
+  第一阶段健身锻炼 - 大仙の奇妙冒险
   
   </title>
   
@@ -98,10 +98,10 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>LeetCode-3.无重复字符的最长子串</h1>
+          <h1>第一阶段健身锻炼</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2020/05/07</span>
+          <span class="date">2020/05/24</span>
 
           
            
@@ -116,90 +116,25 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <h2 id="toc_0">题目描述</h2>
+      <p>今年认真反省了下多年来多次随意的，没有任何效果和长进的健身历史，终于决定真真正正得开始一次增肌健身。请了私教，树立目标，并且决心要达到这个目标。</p>
 
-<p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p>
+<p>其实目标特别简单，就是在训练半年之后，在10月份，体重可以达到<strong>120g</strong>的水准。当然，增加的一定是肌肉。自己是一个典型的外胚型体质，偏瘦，吃的也不多，体重长年维持在100g出头，不通过锻炼是不可能变重的。而且自己追求的也不是简单得变重，而是更加有型，有肌肉感💪，。</p>
 
-<p>示例1：</p>
-
-<pre><code class="language-text">输入: &quot;abcabcbb&quot;
-输出: 3 
-解释: 因为无重复字符的最长子串是 &quot;abc&quot;，所以其长度为 3。
-</code></pre>
-
-<p>示例2：</p>
-
-<pre><code class="language-text">输入: &quot;bbbbb&quot;
-输出: 1
-解释: 因为无重复字符的最长子串是 &quot;b&quot;，所以其长度为 1。
-</code></pre>
-
-<h2 id="toc_1">解答一</h2>
+<p>在经过一个月比较高强度（18节课）的锻炼之后，现在自己的水平：</p>
 
 <ul>
-<li>自己一开始的想法。</li>
-<li>两个指针移动，圈定子串。</li>
-<li>判断子串是否有重复的。</li>
-<li>可以通过。但是效率不高。</li>
+<li>体重： 54kg</li>
+<li>杠铃深蹲：最大40kg，4个</li>
+<li>倒蹬：50kg</li>
+<li>哑铃推胸：12.5kg * 2</li>
+<li>杠铃推胸：10kg * 2</li>
+<li>单臂哑铃划船：12.5kg</li>
+<li>硬拉：7.5kg * 2</li>
 </ul>
 
-<pre><code class="language-javascript">var lengthOfLongestSubstring = function (s) {
-  if (s.length === 1) return 1
-  
-  let start = 0
-  let end = 1
-  let maxLength = 0
+<p>先做一个小小的记录。一个月之后再更新一下，看看进步的情况。现在才明白健身真的特别重要，身体是革命的本钱，没有强壮的身体和坚强的毅力就没有一切。努力持续进步，让自己<code>变秃变强</code>。</p>
 
-  while(start &lt; s.length) {
-    while(end &lt; s.length) {
-      let temp = s.slice(start, end)
-      
-      if (temp.indexOf(s.charAt(end)) &gt; -1) {
-        // 有重复的
-        if (maxLength &lt; (end - start)) {
-          maxLength = (end - start)
-        }
-        break
-      } else {
-        if (maxLength &lt; (end - start) + 1) {
-          maxLength = (end - start) + 1
-        }
-      }
-
-      end += 1
-    }
-    start += 1
-    end = start + 1
-  }
-
-  return maxLength
-}
-</code></pre>
-
-<h2 id="toc_2">解答二</h2>
-
-<ul>
-<li>另一种，更快一点。</li>
-</ul>
-
-<pre><code class="language-javascript">var lengthOfLongestSubstring = function(s) {
-  let str=&quot;&quot; //存放无重复子串
-  let size=0 //当前最长无重复子串的长度
-
-  for (let i = 0,len = s.length; i &lt; len; i++) {
-    let char = s.charAt(i)
-    let index = str.indexOf(char)
-    if (index === -1) {
-      str += char
-      size = size &lt; str.length ? str.length : size
-    } else {
-        // 去掉重复字符的
-      str = str.substr(index + 1) + char
-    }
-  }
-  return size
-}
-</code></pre>
+<p><img src="media/15903238482796/v2-29aa6291974e3ae4aaddd968008cb370_b.png" alt="v2-29aa6291974e3ae4aaddd968008cb370_b"/></p>
 
 
     
@@ -210,16 +145,13 @@
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="15889500758209.html" 
-          title="Previous Post: LeetCode-5.最长回文子串">&laquo; LeetCode-5.最长回文子串</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="15886907009065.html" 
-          title="Next Post: LeetCode-15.三数之和">LeetCode-15.三数之和 &raquo;</a>
+          <a  href="15889500758209.html" 
+          title="Next Post: LeetCode-5.最长回文子串">LeetCode-5.最长回文子串 &raquo;</a>
       
       </p>
         </div>
